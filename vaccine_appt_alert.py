@@ -36,11 +36,11 @@ def check_for_phrase(all_texts, phrase):
 
 
 websites = {'https://apps6.health.ny.gov/doh2/applinks/cdmspr/2/counties?OpID=BB8F752136310A04E0530A6C7C16CBAF':
-                ['Welcome to CDMS', 'center', 'No Appointments Available']}
-    # 'https://healow.com/apps/jsp/webview/openaccess/widgets/uc/ucFacility.jsp?apu_id=305742&facility_id=7':
-    #             ['healow', 'fnt14-light-grey', "No appointment availabilities."],
-    #          'https://www.hackensackmeridianhealth.org/covid19/covid-19-vaccine-registration/':
-    #              ['Hackensack Meridian Health', 'errormessage', 'no available appointments.']}
+                ['Welcome to CDMS', 'center', 'No Appointments Available'],
+    'https://healow.com/apps/jsp/webview/openaccess/widgets/uc/ucFacility.jsp?apu_id=305742&facility_id=7':
+                ['healow', 'fnt14-light-grey', "No appointment availabilities."],
+             'https://www.hackensackmeridianhealth.org/covid19/covid-19-vaccine-registration/':
+                 ['Hackensack Meridian Health', 'errormessage', 'no available appointments.']}
 alert = []
 for url, attributes in websites.items():
     title_word, class_name, phrase = attributes
@@ -55,12 +55,12 @@ for url, attributes in websites.items():
 
 browser.quit()
 if len(alert) > 0:
-    print('Alert!')
-    # account_sid = 'AC57e3934faeada9eae5b2808218509ea2'
-    # auth_token = '82116d1a6bc21a751f520bb6a04fd7ff'
-    # client = Client(account_sid, auth_token)
-    # nl = '\n\n'
-    # message = client.messages.create(body=f"Available on the following sites:\n{nl.join(alert)}",
-    #                                  from_='+12182033819',
-    #                                  to='+19177506960')
-    # print(message.sid)
+    # print('Alert!')
+    account_sid = 'AC57e3934faeada9eae5b2808218509ea2'
+    auth_token = '82116d1a6bc21a751f520bb6a04fd7ff'
+    client = Client(account_sid, auth_token)
+    nl = '\n\n'
+    message = client.messages.create(body=f"Available on the following sites:\n{nl.join(alert)}",
+                                     from_='+12182033819',
+                                     to='+19177506960')
+    print(message.sid)
